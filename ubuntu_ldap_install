@@ -1,0 +1,30 @@
+ubuntu 18 server 安装 LDAP
+===========================
+
+# 安装
+
+`sudo apt install slapd ldap-utils`
+
+# 配置LDAP服务器
+
+1. `sudo dpkg-reconfigure slapd`
+2. 输入域名
+3. 选择MDB
+4. Do you want the database to be removed when slapd is purged? No.
+5. Move old database? Yes.
+
+# 配置LDAP客户端
+
+1. 
+  ```
+  #/etc/ldap/ldap.conf
+  BASE     dc=your-domain,dc=com
+  URI      ldap://localhost
+  
+  ```
+2. `ldapsearch -x` 输出 `result 0`
+
+# 安装管理客户端
+
+1. `sudo apt install phpldapadmin`
+2. `/etc/phpldapadmin/config.php` 
